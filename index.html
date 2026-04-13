@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlamlyHQ — The All-in-One Platform for Beauty Professionals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Raleway',sans-serif;color:#333;background:#fff}
+    a{text-decoration:none}
+
+    /* Nav */
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;max-width:1200px;margin:0 auto}
+    .nav-brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#2A7A75}
+    .nav-links{display:flex;gap:24px;align-items:center}
+    .nav-links a{color:#666;font-size:14px;font-weight:500}
+    .nav-links a:hover{color:#2A7A75}
+    .nav-links .btn-nav{padding:10px 24px;background:#2A7A75;color:#fff;border-radius:8px;font-weight:500}
+    .nav-links .btn-nav:hover{background:#236661}
+
+    /* Hero */
+    .hero{text-align:center;padding:80px 20px 60px;max-width:800px;margin:0 auto}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:#333;line-height:1.15;margin-bottom:20px}
+    .hero h1 span{color:#2A7A75}
+    .hero p{font-size:18px;color:#666;line-height:1.6;max-width:600px;margin:0 auto 32px}
+    .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .hero-btns .btn{padding:16px 36px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
+    .btn-cta{background:#2A7A75;color:#fff}
+    .btn-cta:hover{background:#236661}
+    .btn-secondary{background:#f0f9f8;color:#2A7A75;border:1px solid #B5DED9}
+    .btn-secondary:hover{background:#e5f4f2}
+
+    /* Features */
+    .features{padding:60px 20px;max-width:1100px;margin:0 auto}
+    .features h2{font-family:'Cormorant Garamond',serif;font-size:36px;text-align:center;margin-bottom:48px;color:#333}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+    .feature{padding:28px;border-radius:16px;background:#f8fafa;border:1px solid #f0f0f0;transition:box-shadow .2s}
+    .feature:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .feature-icon{font-size:28px;margin-bottom:12px}
+    .feature h3{font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:8px;color:#2A7A75}
+    .feature p{font-size:14px;color:#666;line-height:1.6}
+
+    /* Pricing */
+    .pricing{padding:80px 20px;background:#f8fafa}
+    .pricing h2{font-family:'Cormorant Garamond',serif;font-size:36px;text-align:center;margin-bottom:12px}
+    .pricing-sub{text-align:center;color:#888;font-size:15px;margin-bottom:48px}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:900px;margin:0 auto}
+    .plan{background:#fff;border-radius:16px;padding:32px;border:2px solid #f0f0f0;text-align:center;transition:border .2s}
+    .plan.popular{border-color:#2A7A75;position:relative}
+    .plan.popular::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#2A7A75;color:#fff;padding:4px 16px;border-radius:12px;font-size:12px;font-weight:500}
+    .plan h3{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:8px}
+    .plan .price{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:#2A7A75;margin:16px 0 8px}
+    .plan .price span{font-size:16px;color:#888;font-family:'Raleway',sans-serif;font-weight:400}
+    .plan ul{list-style:none;padding:0;margin:20px 0;text-align:left}
+    .plan li{padding:8px 0;font-size:14px;color:#555;border-bottom:1px solid #f8f8f8}
+    .plan li::before{content:'✓ ';color:#2A7A75;font-weight:600}
+    .plan .btn{width:100%;margin-top:16px;padding:14px;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:inherit}
+
+    /* Footer */
+    .footer{padding:40px 20px;text-align:center;color:#888;font-size:13px;border-top:1px solid #f0f0f0}
+    .footer a{color:#2A7A75}
+
+    @media(max-width:600px){
+      .hero h1{font-size:34px}
+      .nav{padding:16px 20px}
+      .nav-links{gap:12px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-brand">GlamlyHQ</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://app.glamlyhq.com">Sign In</a>
+      <a href="https://app.glamlyhq.com/signup.html" class="btn-nav">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Your beauty business, <span>beautifully managed</span></h1>
+    <p>GlamlyHQ is the all-in-one CRM built for hairstylists, makeup artists, and beauty professionals. Manage leads, bookings, contracts, invoices, and client communication — all from one platform.</p>
+    <div class="hero-btns">
+      <a href="https://app.glamlyhq.com/signup.html" class="btn btn-cta">Start Free 14-Day Trial</a>
+      <a href="#features" class="btn btn-secondary">See Features</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Everything you need to run your business</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>Lead Pipeline</h3>
+        <p>Capture inquiries from your website, Instagram, or referrals. Track every lead through your pipeline from first contact to booking.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Booking Management</h3>
+        <p>Manage all your bookings in one place. Assign stylists, track statuses, and never lose track of a client again.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💰</div>
+        <h3>Invoicing & Payments</h3>
+        <p>Create professional invoices with your service catalog. Accept payments online or record cash, Venmo, and Zelle payments.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📝</div>
+        <h3>Contracts & E-Signatures</h3>
+        <p>Send contracts clients can sign from their phone. Legally binding with IP tracking, timestamps, and PDF storage.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💇</div>
+        <h3>Service Catalog</h3>
+        <p>Build your menu of services with pricing, durations, and categories. Pull services directly into invoices and proposals.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Embeddable Forms</h3>
+        <p>Drop a beautiful inquiry form on any website with one line of code. Leads flow straight into your pipeline.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>SMS Notifications</h3>
+        <p>Automated text messages for booking confirmations, reminders, and stylist assignments. Powered by Twilio.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Bridal Questionnaires</h3>
+        <p>Send custom questionnaires to learn about your bride's vision, hair type, wedding details, and inspiration — before the trial run.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👥</div>
+        <h3>Team Management</h3>
+        <p>Manage your stylists, assign bookings, track commissions, and keep your whole team in sync.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <h2>Simple, transparent pricing</h2>
+    <p class="pricing-sub">Start free. Upgrade when you're ready.</p>
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>Solo</h3>
+        <div class="price">$29<span>/mo</span></div>
+        <ul>
+          <li>1 stylist</li>
+          <li>Up to 100 bookings/month</li>
+          <li>Lead pipeline</li>
+          <li>Invoicing & online payments</li>
+          <li>Client communication</li>
+          <li>Inquiry form widget</li>
+          <li>500 MB storage</li>
+        </ul>
+        <a href="https://app.glamlyhq.com/signup.html" class="btn btn-secondary">Start Free Trial</a>
+      </div>
+      <div class="plan popular">
+        <h3>Team</h3>
+        <div class="price">$49<span>/mo</span></div>
+        <ul>
+          <li>Up to 5 stylists</li>
+          <li>Everything in Solo</li>
+          <li>Unlimited bookings</li>
+          <li>Bridal timeline builder</li>
+          <li>Team & commission management</li>
+          <li>Contracts & e-signatures</li>
+          <li>Marketing hub & analytics</li>
+          <li>2 GB storage</li>
+        </ul>
+        <a href="https://app.glamlyhq.com/signup.html" class="btn btn-cta">Start Free Trial</a>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <div class="price">$99<span>/mo</span></div>
+        <ul>
+          <li>Up to 15 stylists</li>
+          <li>Everything in Team</li>
+          <li>AI content engine</li>
+          <li>All modules included</li>
+          <li>Priority support</li>
+          <li>10 GB storage</li>
+        </ul>
+        <a href="https://app.glamlyhq.com/signup.html" class="btn btn-secondary">Start Free Trial</a>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <div class="price">$199<span>/mo</span></div>
+        <ul>
+          <li>Unlimited stylists</li>
+          <li>Everything in Pro</li>
+          <li>White-label branding</li>
+          <li>Custom integrations</li>
+          <li>Dedicated priority support</li>
+          <li>50 GB storage</li>
+        </ul>
+        <a href="https://app.glamlyhq.com/signup.html" class="btn btn-secondary">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 GlamlyHQ. Built for beauty professionals, by beauty professionals.</p>
+    <p style="margin-top:8px"><a href="https://app.glamlyhq.com">Sign In</a> &middot; <a href="https://app.glamlyhq.com/signup.html">Sign Up</a></p>
+  </footer>
+</body>
+</html>

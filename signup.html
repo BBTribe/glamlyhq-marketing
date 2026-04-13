@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlamlyHQ — Start Free Trial</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Primary — Teal */
+      --teal: #1A6B5A;
+      --teal-deep: #0D4A3D;
+      --teal-darker: #082E28;
+      --teal-light: #2A9E84;
+      --sage: #7DA393;
+      --sage-light: rgba(125,163,147,0.12);
+      /* Accent — Gold */
+      --gold: #C6A87D;
+      --gold-bright: #C4A04E;
+      /* Neutrals */
+      --cream: #FAF7F2;
+      --cream-mid: #F3EDE4;
+      --cream-dark: #E8DFD3;
+      --charcoal: #191917;
+      --ink: #2C2C28;
+      --warm-gray: #7D776E;
+      --warm-gray-light: #A9A49C;
+      --white: #FFFFFF;
+      /* Rose */
+      --rose-muted: #C09090;
+      /* Shape */
+      --radius: 12px;
+      --radius-lg: 20px;
+      /* Typography */
+      --font-sans: 'DM Sans', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    #root { width: 100%; display: flex; align-items: center; justify-content: center; }
+
+    .signup-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: 100%;
+      max-width: 460px;
+      border: 1px solid var(--cream-dark);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .logo { font-family: var(--font-serif); font-size: 28px; font-weight: 600; margin-bottom: 4px; color: var(--charcoal); }
+    .logo span { color: var(--teal); }
+    .tagline { color: var(--warm-gray); font-size: 14px; margin-bottom: 24px; }
+
+    /* Beta banner */
+    .beta-banner {
+      background: linear-gradient(135deg, #fef9ec 0%, #fdf4da 100%);
+      border: 1px solid #e8d49a;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .beta-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .beta-text { font-size: 13px; color: #7a5c0f; line-height: 1.45; }
+    .beta-text strong { font-weight: 600; color: #5a4008; }
+
+    .trial-banner {
+      background: var(--sage-light);
+      border: 1px solid var(--sage);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--teal-deep);
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--charcoal); }
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s cubic-bezier(.4,0,.2,1);
+      background: var(--white);
+      color: var(--ink);
+    }
+    .form-input::placeholder { color: var(--warm-gray-light); }
+    .form-input:focus { border-color: var(--teal); }
+    .form-input.error { border-color: var(--rose-muted); }
+    .field-error { color: var(--rose-muted); font-size: 12px; margin-top: 4px; }
+
+    /* Business type toggle */
+    .type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .type-btn {
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--cream-dark);
+      background: var(--white);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s cubic-bezier(.4,0,.2,1);
+      color: var(--warm-gray);
+      text-align: center;
+    }
+    .type-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .type-btn.selected { border-color: var(--teal); background: var(--sage-light); color: var(--teal); font-weight: 600; }
+
+    /* Slug preview */
+    .slug-preview {
+      font-size: 12px;
+      color: var(--warm-gray);
+      margin-top: 5px;
+      font-family: 'Courier New', monospace;
+    }
+    .slug-preview span { color: var(--teal); font-weight: 600; }
+
+    /* Submit button */
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s cubic-bezier(.4,0,.2,1);
+      margin-top: 8px;
+    }
+    .btn-submit:hover:not(:disabled) { background: var(--teal-deep); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-error {
+      background: #fdf2f2;
+      border: 1px solid #e8c5c5;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--rose-muted);
+      margin-top: 12px;
+    }
+
+    .signin-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--warm-gray);
+    }
+    .signin-link a { color: var(--teal); text-decoration: none; font-weight: 500; }
+    .signin-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+'use strict';
+const { createElement: e, useState: S, useEffect: F, useRef: R, useCallback: C } = React;
+
+const API = '/api/public/signup';
+
+function toSlug(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .slice(0, 60);
+}
+
+function SignupApp() {
+  const [betaStatus, setBetaStatus] = S(null);
+  const [form, setForm] = S({
+    tenantName: '',
+    ownerFullName: '',
+    ownerEmail: '',
+    businessType: '',
+    slug: '',
+  });
+  const [slugEdited, setSlugEdited] = S(false);
+  const [slugError, setSlugError] = S('');
+  const [submitError, setSubmitError] = S('');
+  const [busy, setBusy] = S(false);
+
+  // Load beta status on mount
+  F(() => {
+    fetch('/api/public/signup/beta-status')
+      .then(r => r.json())
+      .then(j => { if (j.ok) setBetaStatus(j.data); })
+      .catch(() => {}); // non-fatal
+  }, []);
+
+  // Auto-generate slug from business name unless user has manually edited it
+  F(() => {
+    if (!slugEdited) {
+      setForm(f => ({ ...f, slug: toSlug(f.tenantName) }));
+    }
+  }, [form.tenantName, slugEdited]);
+
+  function set(field) {
+    return ev => setForm(f => ({ ...f, [field]: ev.target.value }));
+  }
+
+  function handleSlugChange(ev) {
+    setSlugEdited(true);
+    setSlugError('');
+    setForm(f => ({ ...f, slug: ev.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '') }));
+  }
+
+  async function checkSlug() {
+    const s = form.slug;
+    if (!s || s.length < 2) return;
+    // POST a dry-run isn't available, so we attempt the check only on 409 at submit.
+    // Blur validates format only.
+    if (!/^[a-z0-9-]+$/.test(s)) {
+      setSlugError('Only lowercase letters, numbers, and hyphens');
+    }
+  }
+
+  async function handleSubmit(ev) {
+    ev.preventDefault();
+    setSubmitError('');
+    setSlugError('');
+
+    if (!form.businessType) {
+      setSubmitError('Please select a business type.');
+      return;
+    }
+
+    setBusy(true);
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tenantName: form.tenantName,
+          slug: form.slug,
+          ownerEmail: form.ownerEmail,
+          ownerFullName: form.ownerFullName,
+          businessType: form.businessType,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Chicago',
+        }),
+      });
+      const json = await res.json();
+
+      if (res.status === 201 && json.ok) {
+        window.location.href =
+          'https://app.glamlyhq.com/login?welcome=1&email=' + encodeURIComponent(form.ownerEmail);
+        return;
+      }
+
+      if (res.status === 409) {
+        setSlugError('That business name is taken, try another');
+        return;
+      }
+
+      setSubmitError(json.error?.message || 'Something went wrong, please try again.');
+    } catch (_) {
+      setSubmitError('Something went wrong, please try again.');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // ── Banner ──────────────────────────────────────────────────────────────────
+  const banner = betaStatus === null
+    ? null // loading, show nothing yet
+    : betaStatus.isOpen
+      ? e('div', { className: 'beta-banner' },
+          e('div', { className: 'beta-icon' }, '⭐'),
+          e('div', { className: 'beta-text' },
+            e('strong', null, betaStatus.betaCohortRemaining + ' founding team spot' + (betaStatus.betaCohortRemaining === 1 ? '' : 's') + ' remaining'),
+            ' — free for 12 months, locked-in pricing after.'
+          )
+        )
+      : e('div', { className: 'trial-banner' }, '14-day free trial. No credit card required.');
+
+  // ── Slug preview ────────────────────────────────────────────────────────────
+  const slugPreview = form.slug
+    ? e('div', { className: 'slug-preview' },
+        'app.glamlyhq.com/', e('span', null, form.slug)
+      )
+    : null;
+
+  // ── Render ──────────────────────────────────────────────────────────────────
+  return e('div', { className: 'signup-card' },
+    e('div', { className: 'logo' }, 'Glamly', e('span', null, 'HQ')),
+    e('p', { className: 'tagline' }, 'Create your account'),
+
+    banner,
+
+    e('form', { onSubmit: handleSubmit },
+      // Business name
+      e('div', { className: 'form-group' },
+        e('label', { className: 'form-label' }, 'Business name'),
+        e('input', {
+          className: 'form-input',
+          type: 'text',
+          value: form.tenantName,
+          onChange: set('tenantName'),
+          placeholder: 'e.g. Belle Bridal Studio',
+          required: true,
+          minLength: 2,
+          maxLength: 100,
+          autoFocus: true,
+        })
+      ),
+
+      // Your name
+      e('div', { className: 'form-group' },
+        e('label', { className: 'form-label' }, 'Your name'),
+        e('input', {
+          className: 'form-input',
+          type: 'text',
+          value: form.ownerFullName,
+          onChange: set('ownerFullName'),
+          placeholder: 'Full name',
+          required: true,
+          minLength: 1,
+          maxLength: 100,
+        })
+      ),
+
+      // Email
+      e('div', { className: 'form-group' },
+        e('label', { className: 'form-label' }, 'Email address'),
+        e('input', {
+          className: 'form-input',
+          type: 'email',
+          value: form.ownerEmail,
+          onChange: set('ownerEmail'),
+          placeholder: 'you@example.com',
+          required: true,
+        })
+      ),
+
+      // Business type
+      e('div', { className: 'form-group' },
+        e('label', { className: 'form-label' }, 'Business type'),
+        e('div', { className: 'type-toggle' },
+          e('button', {
+            type: 'button',
+            className: 'type-btn' + (form.businessType === 'bridal' ? ' selected' : ''),
+            onClick: () => setForm(f => ({ ...f, businessType: 'bridal' })),
+          }, '💍 Bridal Team'),
+          e('button', {
+            type: 'button',
+            className: 'type-btn' + (form.businessType === 'salon' ? ' selected' : ''),
+            onClick: () => setForm(f => ({ ...f, businessType: 'salon' })),
+          }, '✂️ Salon')
+        )
+      ),
+
+      // Slug
+      e('div', { className: 'form-group' },
+        e('label', { className: 'form-label' }, 'Your account URL'),
+        e('input', {
+          className: 'form-input' + (slugError ? ' error' : ''),
+          type: 'text',
+          value: form.slug,
+          onChange: handleSlugChange,
+          onBlur: checkSlug,
+          placeholder: 'my-studio',
+          required: true,
+          minLength: 2,
+          maxLength: 60,
+        }),
+        slugPreview,
+        slugError && e('div', { className: 'field-error' }, slugError)
+      ),
+
+      submitError && e('div', { className: 'form-error' }, submitError),
+
+      e('button', { className: 'btn-submit', type: 'submit', disabled: busy },
+        busy ? 'Creating account…' : (betaStatus?.isOpen ? 'Claim your spot →' : 'Start free trial →')
+      )
+    ),
+
+    e('div', { className: 'signin-link' },
+      'Already have an account? ',
+      e('a', { href: 'https://app.glamlyhq.com' }, 'Sign in →')
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(e(SignupApp));
+</script>
+</body>
+</html>
